@@ -1,0 +1,13 @@
+var R=require("../../chunks/ssr/[turbopack]_runtime.js")("server/app/_not-found/page.js")
+R.c("server/chunks/ssr/Downloads_religious-community-system (2)_a182d684._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__cdebfb45._.js")
+R.c("server/chunks/ssr/c0410_next_dist_esm_build_templates_app-page_f32563d0.js")
+R.c("server/chunks/ssr/[root-of-the-server]__b7bf2880._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__6282ab12._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__be0414b3._.js")
+R.c("server/chunks/ssr/[root-of-the-server]__14cbeab2._.js")
+R.c("server/chunks/ssr/c0410_next_dist_client_components_8c714e2c._.js")
+R.c("server/chunks/ssr/c0410_next_dist_client_components_builtin_forbidden_0b022a78.js")
+R.c("server/chunks/ssr/e0aa2_-community-system (2)__next-internal_server_app__not-found_page_actions_8a52bd45.js")
+R.m(67348)
+module.exports=R.m(67348).exports

@@ -1,0 +1,3 @@
+module.exports=[66665,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(48103);a.n(d("[project]/Downloads/religious-community-system (2)/node_modules/next/dist/client/components/builtin/global-error.js <module evaluation>"))},25877,(a,b,c)=>{let{createClientModuleProxy:d}=a.r(48103);a.n(d("[project]/Downloads/religious-community-system (2)/node_modules/next/dist/client/components/builtin/global-error.js"))},41591,a=>{"use strict";a.i(66665);var b=a.i(25877);a.n(b)}];
+
+//# sourceMappingURL=c0410_next_dist_client_components_builtin_global-error_bccbbfe4.js.map

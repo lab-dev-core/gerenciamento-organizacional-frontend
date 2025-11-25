@@ -1,0 +1,17 @@
+{
+  "/_global-error/page": "/_global-error",
+  "/_not-found/page": "/_not-found",
+  "/dashboard/categories/page": "/dashboard/categories",
+  "/dashboard/documents/page": "/dashboard/documents",
+  "/dashboard/library/page": "/dashboard/library",
+  "/dashboard/locations/page": "/dashboard/locations",
+  "/dashboard/page": "/dashboard",
+  "/dashboard/progress/page": "/dashboard/progress",
+  "/dashboard/roles/page": "/dashboard/roles",
+  "/dashboard/search/page": "/dashboard/search",
+  "/dashboard/settings/page": "/dashboard/settings",
+  "/dashboard/stages/page": "/dashboard/stages",
+  "/dashboard/users/page": "/dashboard/users",
+  "/login/page": "/login",
+  "/page": "/"
+}

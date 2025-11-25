@@ -1,0 +1,72 @@
+[00:00:02.058] Server  LOG      ✓ Ready in 1435ms
+[00:00:06.357] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:07.871] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:00:07.871] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/","route":"/"}
+[00:00:07.871] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/ color: rgb(120, 120, 120) color: inherit {"dp":"/","o":"http://localhost:3000/","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077267048}
+[00:00:07.871] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard","o":"http://localhost:3000/dashboard","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077267120}
+[00:00:10.219] Browser ERROR   [v0] API request failed: {}
+[00:00:10.219] Browser ERROR   [v0] Error fetching dashboard data: {}
+[00:00:10.219] Browser ERROR   [v0] API request failed: {}
+[00:00:10.219] Browser ERROR   [v0] API request failed: {}
+[00:00:10.219] Browser ERROR   [v0] API request failed: {}
+[00:00:10.219] Browser ERROR   [v0] API request failed: {}
+[00:00:10.219] Browser ERROR   [v0] Error fetching dashboard data: {}
+[00:00:10.219] Browser ERROR   [v0] API request failed: {}
+[00:00:12.553] Browser ERROR   [v0] API request failed: {}
+[00:00:12.553] Browser ERROR   [v0] API request failed: {}
+[00:00:20.841] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/documents color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/documents","o":"http://localhost:3000/dashboard/documents","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077280147}
+[00:00:23.232] Browser ERROR   [v0] API request failed: {}
+[00:00:23.232] Browser ERROR   [v0] Error fetching data: {}
+[00:00:23.232] Browser ERROR   [v0] API request failed: {}
+[00:00:23.232] Browser ERROR   [v0] API request failed: {}
+[00:00:23.232] Browser ERROR   [v0] API request failed: {}
+[00:00:23.232] Browser ERROR   [v0] Error fetching data: {}
+[00:00:23.232] Browser ERROR   [v0] API request failed: {}
+[00:00:23.232] Browser ERROR   [v0] API request failed: {}
+[00:00:27.893] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/library color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/library","o":"http://localhost:3000/dashboard/library","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077287199}
+[00:00:30.253] Browser ERROR   [v0] API request failed: {}
+[00:00:30.253] Browser ERROR   [v0] API request failed: {}
+[00:00:31.205] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/users color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/users","o":"http://localhost:3000/dashboard/users","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077290511}
+[00:00:33.586] Browser ERROR   [v0] API request failed: {}
+[00:00:33.586] Browser ERROR   [v0] API request failed: {}
+[00:00:33.586] Browser ERROR   [v0] API request failed: {}
+[00:00:33.586] Browser ERROR   [v0] API request failed: {}
+[00:00:33.586] Browser ERROR   [v0] API request failed: {}
+[00:00:33.586] Browser ERROR   [v0] API request failed: {}
+[00:03:16.886] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/roles color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/roles","o":"http://localhost:3000/dashboard/roles","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077456192}
+[00:03:19.248] Browser ERROR   [v0] API request failed: {}
+[00:03:19.248] Browser ERROR   [v0] API request failed: {}
+[00:03:21.332] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/locations color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/locations","o":"http://localhost:3000/dashboard/locations","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077460640}
+[00:03:23.707] Browser ERROR   [v0] API request failed: {}
+[00:03:23.707] Browser ERROR   [v0] API request failed: {}
+[00:03:23.707] Browser ERROR   Erro ao carregar usuários
+[00:03:23.707] Browser ERROR   [v0] API request failed: {}
+[00:03:23.707] Browser ERROR   [v0] API request failed: {}
+[00:03:23.707] Browser ERROR   Erro ao carregar usuários
+[00:04:00.524] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/users color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/users","o":"http://localhost:3000/dashboard/users","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077499829}
+[00:04:02.276] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/roles color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/roles","o":"http://localhost:3000/dashboard/roles","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077501579}
+[00:04:03.175] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/locations color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/locations","o":"http://localhost:3000/dashboard/locations","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077502477}
+[00:04:05.232] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/roles color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/roles","o":"http://localhost:3000/dashboard/roles","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077504535}
+[00:04:05.664] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/locations color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/locations","o":"http://localhost:3000/dashboard/locations","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077504963}
+[00:04:06.966] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/categories color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/categories","o":"http://localhost:3000/dashboard/categories","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077506272}
+[00:04:07.624] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/locations color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/locations","o":"http://localhost:3000/dashboard/locations","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077506931}
+[00:04:08.433] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/roles color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/roles","o":"http://localhost:3000/dashboard/roles","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077507737}
+[00:04:08.963] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/users color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/users","o":"http://localhost:3000/dashboard/users","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077508267}
+[00:04:09.591] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/roles color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/roles","o":"http://localhost:3000/dashboard/roles","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077508898}
+[00:04:09.888] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/users color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/users","o":"http://localhost:3000/dashboard/users","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077509197}
+[00:04:11.424] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/stages color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/stages","o":"http://localhost:3000/dashboard/stages","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077510719}
+[00:04:12.376] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/progress color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/progress","o":"http://localhost:3000/dashboard/progress","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077511667}
+[00:04:13.378] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/search color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/search","o":"http://localhost:3000/dashboard/search","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077512686}
+[00:04:13.557] Browser ERROR   [v0] API request failed: {"message":"HTTP error! status: 403","status":403}
+[00:04:13.557] Browser ERROR   Error loading recent documents
+[00:04:13.558] Browser ERROR   [v0] API request failed: {"message":"HTTP error! status: 403","status":403}
+[00:04:13.558] Browser ERROR   Error loading recent documents
+[00:04:13.800] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/library color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/library","o":"http://localhost:3000/dashboard/library","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077513108}
+[00:04:17.486] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:17.486] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:04:17.486] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard/documents/4","route":"/dashboard/documents/4"}
+[00:04:17.486] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/documents/4 color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/documents/4","o":"http://localhost:3000/dashboard/documents/4","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077516804}
+[00:04:20.265] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:04:20.403] Browser LOG     %c[Vercel Web Analytics]%c Debug mode is enabled by default in development. No requests will be sent to the server. color: rgb(120, 120, 120) color: inherit
+[00:04:20.403] Browser LOG     %c[Vercel Web Analytics]%c Running queued event color: rgb(120, 120, 120) color: inherit pageview {"path":"/dashboard/library","route":"/dashboard/library"}
+[00:04:20.403] Browser LOG     %c[Vercel Web Analytics]%c [pageview] http://localhost:3000/dashboard/library color: rgb(120, 120, 120) color: inherit {"dp":"/dashboard/library","o":"http://localhost:3000/dashboard/library","r":"","sdkn":"@vercel/analytics/next","sdkv":"1.5.0","sv":"0.1.3","ts":1764077519700}
