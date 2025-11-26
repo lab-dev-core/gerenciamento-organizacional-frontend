@@ -32,41 +32,76 @@ export class ApiClient {
     }
   }
 
-  private static async request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
-    const token = this.getToken()
-    const headers: HeadersInit = {
-      "Content-Type": "application/json",
-      ...(token && { Authorization: `Bearer ${token}` }),
-      ...options.headers,
+  // lib/api.ts
+private static async request<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
+  const token = this.getToken()
+  const headers: HeadersInit = {
+    "Content-Type": "application/json",
+    ...(token && { Authorization: `Bearer ${token}` }),
+    ...options.headers,
+  }
+
+  try {
+    const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+      ...options,
+      headers,
+    })
+
+    if (response.status === 401) {
+      this.clearToken()
+      if (typeof window !== "undefined") {
+        window.location.href = "/login"
+      }
+      // interrompe aqui
+      throw { message: "Unauthorized", status: 401 }
     }
 
-    try {
-      const response = await fetch(`${API_BASE_URL}${endpoint}`, {
-        ...options,
-        headers,
-      })
-
-      if (response.status === 401) {
-        this.clearToken()
-        if (typeof window !== "undefined") {
-          window.location.href = "/login"
+    if (!response.ok) {
+      // tenta extrair mensagem do corpo (json ou texto)
+      let serverMessage: any = null
+      const ct = response.headers.get("content-type") || ""
+      try {
+        if (ct.includes("application/json")) {
+          serverMessage = await response.json()
+        } else {
+          const text = await response.text()
+          serverMessage = text || null
         }
+      } catch (_) {
+        /* ignore */
       }
 
-      if (!response.ok) {
-        const error: ApiError = {
-          message: `HTTP error! status: ${response.status}`,
-          status: response.status,
-        }
-        throw error
+      const error: ApiError = {
+        message: serverMessage?.message || serverMessage || `HTTP error! status: ${response.status}`,
+        status: response.status,
       }
-
-      return await response.json()
-    } catch (error) {
-      console.error("[v0] API request failed:", error)
       throw error
     }
+
+    // Sucesso: lida com 204/sem corpo e content-types não-JSON
+    if (response.status === 204) {
+      return undefined as T
+    }
+
+    const ct = response.headers.get("content-type") || ""
+    if (ct.includes("application/json")) {
+      return (await response.json()) as T
+    }
+
+    // Se não for JSON, tenta texto; se vazio, retorna undefined
+    const text = await response.text()
+    return (text as unknown) as T
+  } catch (error) {
+    // log mais útil
+    const e = error as Partial<ApiError> | Error
+    console.error("[v0] API request failed:", {
+      message: (e as any)?.message,
+      status: (e as any)?.status,
+    })
+    throw error
   }
+}
+
 
   static async get<T>(endpoint: string): Promise<T> {
     return this.request<T>(endpoint, { method: "GET" })
@@ -236,3 +271,23 @@ export const categoriesApi = {
   update: (id: number, category: any) => ApiClient.put<any>(`/api/categories/${id}`, category),
   delete: (id: number) => ApiClient.delete<void>(`/api/categories/${id}`),
 }
+
+export const followupsApi = {
+  getAccessible: () => ApiClient.get<any[]>("/api/follow-up"),
+  getMyMeetings: () => ApiClient.get<any[]>("/api/follow-up/my-meetings"),
+  getByMentee: (menteeId: number) => ApiClient.get<any[]>(`/api/follow-up/mentee/${menteeId}`),
+  create: (dto: any) => ApiClient.post<any>("/api/follow-up", dto),
+  update: (id: number, dto: any) => ApiClient.put<any>(`/api/follow-up/${id}`, dto),
+  delete: (id: number) => ApiClient.delete<void>(`/api/follow-up/${id}`),
+  markAsCompleted: (id: number) => ApiClient.put<any>(`/api/follow-up/${id}/complete`, {}),
+  cancel: (id: number) => ApiClient.put<any>(`/api/follow-up/${id}/cancel`, {}),
+  shareWithUser: (id: number, userId: number) => ApiClient.post<any>(`/api/follow-up/${id}/share/user/${userId}`, {}),
+  shareWithRole: (id: number, roleId: number) => ApiClient.post<any>(`/api/follow-up/${id}/share/role/${roleId}`, {}),
+  removeShareWithUser: (id: number, userId: number) => ApiClient.delete<any>(`/api/follow-up/${id}/share/user/${userId}`),
+  getByStatus: (status: string) => ApiClient.get<any[]>(`/api/follow-up/status/${status}`),
+  getUpcoming: (days = 7) => ApiClient.get<any[]>(`/api/follow-up/upcoming?days=${days}`),
+  getByDateRange: (startIso: string, endIso: string) =>
+    ApiClient.get<any[]>(`/api/follow-up/date-range?startDate=${encodeURIComponent(startIso)}&endDate=${encodeURIComponent(endIso)}`),
+  getStatistics: () => ApiClient.get<any>(`/api/follow-up/statistics`),
+}
+

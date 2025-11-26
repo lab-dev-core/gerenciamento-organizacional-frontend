@@ -15,6 +15,7 @@ import { Plus, Loader2, Pencil, Trash2, User } from "lucide-react"
 import { usersApi, rolesApi, locationsApi } from "@/lib/api"
 import { useAuth } from "@/components/auth-provider"
 import { useToast } from "@/hooks/use-toast"
+import { FormField } from "@/components/ui/field"
 
 export default function UsersPage() {
   const { user } = useAuth()
@@ -202,39 +203,31 @@ export default function UsersPage() {
               <DialogTitle>{editingUser ? "Editar Usuário" : "Novo Usuário"}</DialogTitle>
             </DialogHeader>
             <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Informações Básicas */}
               <div className="space-y-4">
                 <h3 className="text-sm font-semibold text-muted-foreground mb-4">Informações Básicas</h3>
+
                 <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="name" className="block mb-2"> {/* Adicionei block mb-2 */}
-                      Nome Completo
-                    </Label>
+                  <FormField label="Nome Completo" htmlFor="name" required>
                     <Input
                       id="name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="João da Silva"
-                      required
                     />
-                  </div>
-                  <div>
-                    <Label htmlFor="username" className="block mb-2"> {/* Adicionei block mb-2 */}
-                      Nome de Usuário
-                    </Label>
+                  </FormField>
+
+                  <FormField label="Nome de Usuário" htmlFor="username" required>
                     <Input
                       id="username"
                       value={formData.username}
                       onChange={(e) => setFormData({ ...formData, username: e.target.value })}
                       placeholder="joao.silva"
-                      required
                     />
-                  </div>
+                  </FormField>
                 </div>
 
-                <div>
-                  <Label htmlFor="password" className="block mb-2"> {/* Adicionei block mb-2 */}
-                    Senha {editingUser && "(deixe em branco para manter)"}
-                  </Label>
+                <FormField label={`Senha ${editingUser ? "(deixe em branco para manter)" : ""}`} htmlFor="password">
                   <Input
                     id="password"
                     type="password"
@@ -243,16 +236,15 @@ export default function UsersPage() {
                     placeholder="••••••••"
                     required={!editingUser}
                   />
-                </div>
+                </FormField>
               </div>
 
+              {/* Contato e Localização */}
               <div className="space-y-4">
                 <h3 className="text-sm font-semibold text-muted-foreground mb-4">Contato e Localização</h3>
+
                 <div className="grid grid-cols-3 gap-4">
-                  <div>
-                    <Label htmlFor="age" className="block mb-2"> {/* Adicionei block mb-2 */}
-                      Idade
-                    </Label>
+                  <FormField label="Idade" htmlFor="age">
                     <Input
                       id="age"
                       type="number"
@@ -260,72 +252,59 @@ export default function UsersPage() {
                       onChange={(e) => setFormData({ ...formData, age: e.target.value })}
                       placeholder="25"
                     />
-                  </div>
-                  <div className="col-span-2">
-                    <Label htmlFor="phone" className="block mb-2"> {/* Adicionei block mb-2 */}
-                      Telefone
-                    </Label>
+                  </FormField>
+
+                  <FormField label="Telefone" htmlFor="phone" className="col-span-2">
                     <Input
                       id="phone"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="(11) 98765-4321"
                     />
-                  </div>
+                  </FormField>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="city" className="block mb-2"> {/* Adicionei block mb-2 */}
-                      Cidade
-                    </Label>
+                  <FormField label="Cidade" htmlFor="city" required>
                     <Input
                       id="city"
                       value={formData.city}
                       onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                       placeholder="São Paulo"
-                      required
                     />
-                  </div>
-                  <div>
-                    <Label htmlFor="state" className="block mb-2"> {/* Adicionei block mb-2 */}
-                      Estado
-                    </Label>
+                  </FormField>
+
+                  <FormField label="Estado" htmlFor="state" required>
                     <Input
                       id="state"
                       value={formData.state}
                       onChange={(e) => setFormData({ ...formData, state: e.target.value })}
                       placeholder="SP"
-                      required
                     />
-                  </div>
+                  </FormField>
                 </div>
 
-                <div>
-                  <Label htmlFor="education" className="block mb-2"> {/* Adicionei block mb-2 */}
-                    Escolaridade
-                  </Label>
+                <FormField label="Escolaridade" htmlFor="education">
                   <Input
                     id="education"
                     value={formData.education}
                     onChange={(e) => setFormData({ ...formData, education: e.target.value })}
                     placeholder="Ensino Superior Completo"
                   />
-                </div>
+                </FormField>
               </div>
 
+              {/* Informações da Comunidade */}
               <div className="space-y-4">
                 <h3 className="text-sm font-semibold text-muted-foreground mb-4">Informações da Comunidade</h3>
+
                 <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="roleId" className="block mb-2"> {/* Adicionei block mb-2 */}
-                      Papel
-                    </Label>
+                  <FormField label="Papel" htmlFor="roleId">
                     <Select
                       value={formData.roleId}
                       onValueChange={(value) => setFormData({ ...formData, roleId: value })}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger id="roleId">
                         <SelectValue placeholder="Selecione um papel" />
                       </SelectTrigger>
                       <SelectContent>
@@ -336,17 +315,16 @@ export default function UsersPage() {
                         ))}
                       </SelectContent>
                     </Select>
+                  </FormField>
 
-                    <Label htmlFor="missionLocatioId" className="block mb-2"> {/* Adicionei block mb-2 */}
-                      Local de Missão
-                    </Label>
+                  <FormField label="Local de Missão" htmlFor="missionLocationId">
                     <Select
                       value={formData.missionLocationId}
                       onValueChange={(value) =>
                         setFormData({ ...formData, missionLocationId: value === "none" ? "" : value })
                       }
                     >
-                      <SelectTrigger>
+                      <SelectTrigger id="missionLocationId">
                         <SelectValue placeholder="Selecione um local" />
                       </SelectTrigger>
                       <SelectContent>
@@ -358,19 +336,16 @@ export default function UsersPage() {
                         ))}
                       </SelectContent>
                     </Select>
-                  </div>
+                  </FormField>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="lifeStage" className="block mb-2"> {/* Adicionei block mb-2 */}
-                      Etapa Formativa
-                    </Label>
+                  <FormField label="Etapa Formativa" htmlFor="lifeStage">
                     <Select
                       value={formData.lifeStage}
                       onValueChange={(value) => setFormData({ ...formData, lifeStage: value })}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger id="lifeStage">
                         <SelectValue placeholder="Selecione uma etapa" />
                       </SelectTrigger>
                       <SelectContent>
@@ -381,16 +356,14 @@ export default function UsersPage() {
                         ))}
                       </SelectContent>
                     </Select>
-                  </div>
-                  <div>
-                    <Label htmlFor="mentorId" className="block mb-2"> {/* Adicionei block mb-2 */}
-                      Mentor
-                    </Label>
+                  </FormField>
+
+                  <FormField label="Mentor" htmlFor="mentorId">
                     <Select
                       value={formData.mentorId}
                       onValueChange={(value) => setFormData({ ...formData, mentorId: value })}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger id="mentorId">
                         <SelectValue placeholder="Selecione um mentor" />
                       </SelectTrigger>
                       <SelectContent>
@@ -402,27 +375,21 @@ export default function UsersPage() {
                         ))}
                       </SelectContent>
                     </Select>
-                  </div>
+                  </FormField>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="communityYears" className="block mb-2"> {/* Adicionei block mb-2 */}
-                      Anos na Comunidade
-                    </Label>
+                  <FormField label="Anos na Comunidade" htmlFor="communityYears" required>
                     <Input
                       id="communityYears"
                       type="number"
                       value={formData.communityYears}
                       onChange={(e) => setFormData({ ...formData, communityYears: e.target.value })}
                       placeholder="2"
-                      required
                     />
-                  </div>
-                  <div>
-                    <Label htmlFor="communityMonths" className="block mb-2"> {/* Adicionei block mb-2 */}
-                      Meses na Comunidade
-                    </Label>
+                  </FormField>
+
+                  <FormField label="Meses na Comunidade" htmlFor="communityMonths">
                     <Input
                       id="communityMonths"
                       type="number"
@@ -430,7 +397,7 @@ export default function UsersPage() {
                       onChange={(e) => setFormData({ ...formData, communityMonths: e.target.value })}
                       placeholder="6"
                     />
-                  </div>
+                  </FormField>
                 </div>
               </div>
 
@@ -441,6 +408,7 @@ export default function UsersPage() {
                 <Button type="submit">Salvar</Button>
               </DialogFooter>
             </form>
+
           </DialogContent>
         </Dialog>
       </div>

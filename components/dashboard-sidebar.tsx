@@ -10,6 +10,7 @@ const navigation = [
   { name: "Dashboard", href: "/dashboard", icon: Home },
   { name: "Documentos", href: "/dashboard/documents", icon: FileText },
   { name: "Biblioteca", href: "/dashboard/library", icon: BookOpen },
+  { name: "Acompanhamentos", href: "/dashboard/followups", icon: FileText },
   { name: "Buscar", href: "/dashboard/search", icon: Search },
   { name: "Meu Progresso", href: "/dashboard/progress", icon: BarChart3 },
   { name: "Minhas Etapas", href: "/dashboard/stages", icon: BarChart3 },

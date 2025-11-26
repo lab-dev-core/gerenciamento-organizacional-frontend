@@ -18,6 +18,7 @@ import { useAuth } from "@/components/auth-provider"
 import { useToast } from "@/hooks/use-toast"
 import { format } from "date-fns"
 import { ptBR } from "date-fns/locale"
+import { FormField } from "@/components/ui/field"
 
 export default function StagesPage() {
   const { user } = useAuth()
@@ -142,14 +143,13 @@ export default function StagesPage() {
               <DialogHeader>
                 <DialogTitle>Nova Etapa Formativa</DialogTitle>
               </DialogHeader>
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <Label htmlFor="userId">Usuário</Label>
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <FormField label="Usuário" htmlFor="userId" >
                   <Select
                     value={formData.userId}
                     onValueChange={(value) => setFormData({ ...formData, userId: value })}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger id="userId">
                       <SelectValue placeholder="Selecione um usuário" />
                     </SelectTrigger>
                     <SelectContent>
@@ -160,24 +160,25 @@ export default function StagesPage() {
                       ))}
                     </SelectContent>
                   </Select>
-                </div>
+                </FormField>
 
-                <div>
-                  <Label htmlFor="name">Nome da Etapa</Label>
+                <FormField label="Nome da Etapa" htmlFor="name" required>
                   <Input
                     id="name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="Ex: Discipulado Inicial"
-                    required
                   />
-                </div>
+                </FormField>
 
-                <div>
-                  <Label>Data de Início</Label>
+                <FormField label="Data de Início" htmlFor="startDateBtn">
                   <Popover>
                     <PopoverTrigger asChild>
-                      <Button variant="outline" className="w-full justify-start text-left font-normal bg-transparent">
+                      <Button
+                        id="startDateBtn"
+                        variant="outline"
+                        className="w-full justify-start text-left font-normal bg-transparent"
+                      >
                         <CalendarIcon className="mr-2 h-4 w-4" />
                         {formData.startDate
                           ? format(formData.startDate, "PPP", { locale: ptBR })
@@ -193,27 +194,32 @@ export default function StagesPage() {
                       />
                     </PopoverContent>
                   </Popover>
-                </div>
+                </FormField>
 
-                <div>
-                  <Label>Data de Término (Opcional)</Label>
+                <FormField label="Data de Término (Opcional)" htmlFor="endDateBtn">
                   <Popover>
                     <PopoverTrigger asChild>
-                      <Button variant="outline" className="w-full justify-start text-left font-normal bg-transparent">
+                      <Button
+                        id="endDateBtn"
+                        variant="outline"
+                        className="w-full justify-start text-left font-normal bg-transparent"
+                      >
                         <CalendarIcon className="mr-2 h-4 w-4" />
-                        {formData.endDate ? format(formData.endDate, "PPP", { locale: ptBR }) : "Selecione uma data"}
+                        {formData.endDate
+                          ? format(formData.endDate, "PPP", { locale: ptBR })
+                          : "Selecione uma data"}
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className="w-auto p-0">
                       <Calendar
                         mode="single"
                         selected={formData.endDate}
-                        onSelect={(date) => setFormData({ ...formData, endDate: date })}
+                        onSelect={(date) => setFormData({ ...formData, endDate: date || undefined })}
                         initialFocus
                       />
                     </PopoverContent>
                   </Popover>
-                </div>
+                </FormField>
 
                 <DialogFooter>
                   <Button type="button" variant="outline" onClick={() => setDialogOpen(false)}>

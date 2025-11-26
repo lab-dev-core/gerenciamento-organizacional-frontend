@@ -172,31 +172,71 @@ export default function CategoriesPage() {
               Nova Categoria
             </Button>
           </DialogTrigger>
-          <DialogContent>
+
+          {/* mesmo container da tela de usuários */}
+          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>{editingCategory ? "Editar Categoria" : "Nova Categoria"}</DialogTitle>
             </DialogHeader>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <Label htmlFor="name">Nome da Categoria</Label>
-                <Input
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="Ex: Documentos Oficiais"
-                  required
-                />
+
+            {/* respiro vertical entre blocos */}
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Bloco: informações básicas */}
+              <div className="space-y-4">
+                <div>
+                  <Label htmlFor="name" className="block mb-2">
+                    Nome da Categoria
+                  </Label>
+                  <Input
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="Ex: Documentos Oficiais"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <Label htmlFor="description" className="block mb-2">
+                    Descrição
+                  </Label>
+                  <Textarea
+                    id="description"
+                    value={formData.description}
+                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                    placeholder="Descreva o propósito desta categoria"
+                    rows={3}
+                  />
+                </div>
               </div>
+
+              {/* (Opcional) Pai da categoria — se quiser expor agora */}
+              {/* 
               <div>
-                <Label htmlFor="description">Descrição</Label>
-                <Textarea
-                  id="description"
-                  value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  placeholder="Descreva o propósito desta categoria"
-                  rows={3}
-                />
+                <Label htmlFor="parentId" className="block mb-2">
+                  Categoria Pai
+                </Label>
+                <Select
+                  value={formData.parentId?.toString() ?? "none"}
+                  onValueChange={(v) =>
+                    setFormData({ ...formData, parentId: v === "none" ? null : Number(v) })
+                  }
+                >
+                  <SelectTrigger id="parentId">
+                    <SelectValue placeholder="Sem categoria pai" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="none">Nenhuma</SelectItem>
+                    {categories.map((c) => (
+                      <SelectItem key={c.id} value={c.id.toString()}>
+                        {c.name}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
+              */}
+
               <DialogFooter>
                 <Button type="button" variant="outline" onClick={() => setDialogOpen(false)}>
                   Cancelar

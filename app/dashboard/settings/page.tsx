@@ -31,7 +31,7 @@ export default function SettingsPage() {
 
     setLoading(true)
     try {
-      // API call to change password would go here
+      // chamada API
       toast({ title: "Senha alterada com sucesso" })
       setFormData({ currentPassword: "", newPassword: "", confirmPassword: "" })
     } catch (error) {
@@ -48,44 +48,47 @@ export default function SettingsPage() {
         <p className="text-muted-foreground">Gerencie suas preferências e informações da conta</p>
       </div>
 
+      {/* Informações da Conta */}
       <Card>
         <CardHeader>
           <CardTitle>Informações da Conta</CardTitle>
           <CardDescription>Suas informações pessoais e de acesso</CardDescription>
         </CardHeader>
-        <CardContent className="space-y-4">
+        <CardContent className="space-y-6">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <Label>Nome</Label>
-              <Input value={user?.name || ""} disabled />
+              <Label htmlFor="name" className="block mb-2">Nome</Label>
+              <Input id="name" value={user?.name || ""} disabled />
             </div>
             <div>
-              <Label>Nome de Usuário</Label>
-              <Input value={user?.username || ""} disabled />
+              <Label htmlFor="username" className="block mb-2">Nome de Usuário</Label>
+              <Input id="username" value={user?.username || ""} disabled />
             </div>
           </div>
+
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <Label>Papel</Label>
-              <Input value={user?.role || ""} disabled />
+              <Label htmlFor="role" className="block mb-2">Papel</Label>
+              <Input id="role" value={user?.role || ""} disabled />
             </div>
             <div>
-              <Label>Etapa Formativa</Label>
-              <Input value={user?.lifeStage || "N/A"} disabled />
+              <Label htmlFor="lifeStage" className="block mb-2">Etapa Formativa</Label>
+              <Input id="lifeStage" value={user?.lifeStage || "N/A"} disabled />
             </div>
           </div>
         </CardContent>
       </Card>
 
+      {/* Alterar Senha */}
       <Card>
         <CardHeader>
           <CardTitle>Alterar Senha</CardTitle>
           <CardDescription>Atualize sua senha de acesso ao sistema</CardDescription>
         </CardHeader>
         <CardContent>
-          <form onSubmit={handlePasswordChange} className="space-y-4">
+          <form onSubmit={handlePasswordChange} className="space-y-6">
             <div>
-              <Label htmlFor="currentPassword">Senha Atual</Label>
+              <Label htmlFor="currentPassword" className="block mb-2">Senha Atual</Label>
               <Input
                 id="currentPassword"
                 type="password"
@@ -94,34 +97,42 @@ export default function SettingsPage() {
                 required
               />
             </div>
+
             <Separator />
-            <div>
-              <Label htmlFor="newPassword">Nova Senha</Label>
-              <Input
-                id="newPassword"
-                type="password"
-                value={formData.newPassword}
-                onChange={(e) => setFormData({ ...formData, newPassword: e.target.value })}
-                required
-              />
+
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <Label htmlFor="newPassword" className="block mb-2">Nova Senha</Label>
+                <Input
+                  id="newPassword"
+                  type="password"
+                  value={formData.newPassword}
+                  onChange={(e) => setFormData({ ...formData, newPassword: e.target.value })}
+                  required
+                />
+              </div>
+              <div>
+                <Label htmlFor="confirmPassword" className="block mb-2">Confirmar Nova Senha</Label>
+                <Input
+                  id="confirmPassword"
+                  type="password"
+                  value={formData.confirmPassword}
+                  onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
+                  required
+                />
+              </div>
             </div>
-            <div>
-              <Label htmlFor="confirmPassword">Confirmar Nova Senha</Label>
-              <Input
-                id="confirmPassword"
-                type="password"
-                value={formData.confirmPassword}
-                onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                required
-              />
+
+            <div className="flex justify-end">
+              <Button type="submit" disabled={loading}>
+                {loading ? "Salvando..." : "Alterar Senha"}
+              </Button>
             </div>
-            <Button type="submit" disabled={loading}>
-              {loading ? "Salvando..." : "Alterar Senha"}
-            </Button>
           </form>
         </CardContent>
       </Card>
 
+      {/* Configurações Administrativas */}
       {user?.role === "ADMIN" && (
         <Card>
           <CardHeader>

@@ -230,6 +230,26 @@ function FieldError({
   )
 }
 
+interface FieldProps {
+  label: string
+  htmlFor: string
+  required?: boolean
+  children: React.ReactNode
+  className?: string
+}
+
+export function FormField({ label, htmlFor, required, children, className }: FieldProps) {
+  return (
+    <div className={className}>
+      <Label htmlFor={htmlFor} className="block mb-2">
+        {label}
+        {required && <span className="text-destructive ml-1">*</span>}
+      </Label>
+      {children}
+    </div>
+  )
+}
+
 export {
   Field,
   FieldLabel,

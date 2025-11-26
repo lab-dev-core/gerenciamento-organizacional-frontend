@@ -164,91 +164,123 @@ export default function LocationsPage() {
               Novo Local
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-2xl">
+
+          {/* container igual ao da tela de usuários */}
+          <DialogContent className="max-w-3xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>{editingLocation ? "Editar Local" : "Novo Local"}</DialogTitle>
             </DialogHeader>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div>
-                <Label htmlFor="name">Nome do Local</Label>
-                <Input
-                  id="name"
-                  value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="Ex: Recanto São Francisco"
-                  required
-                />
-              </div>
-              <div>
-                <Label htmlFor="description">Descrição</Label>
-                <Textarea
-                  id="description"
-                  value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  placeholder="Descreva este local de missão"
-                  rows={2}
-                />
-              </div>
-              <div>
-                <Label htmlFor="address">Endereço</Label>
-                <Input
-                  id="address"
-                  value={formData.address}
-                  onChange={(e) => setFormData({ ...formData, address: e.target.value })}
-                  placeholder="Rua, Número, Bairro"
-                />
-              </div>
-              <div className="grid grid-cols-2 gap-4">
+
+            {/* espaçamento vertical consistente */}
+            <form onSubmit={handleSubmit} className="space-y-6">
+              {/* Nome e descrição */}
+              <div className="space-y-4">
                 <div>
-                  <Label htmlFor="city">Cidade</Label>
+                  <Label htmlFor="name" className="block mb-2">
+                    Nome do Local
+                  </Label>
                   <Input
-                    id="city"
-                    value={formData.city}
-                    onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                    placeholder="São Paulo"
+                    id="name"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="Ex: Recanto São Francisco"
                     required
                   />
                 </div>
+
                 <div>
-                  <Label htmlFor="state">Estado</Label>
-                  <Input
-                    id="state"
-                    value={formData.state}
-                    onChange={(e) => setFormData({ ...formData, state: e.target.value })}
-                    placeholder="SP"
-                    required
+                  <Label htmlFor="description" className="block mb-2">
+                    Descrição
+                  </Label>
+                  <Textarea
+                    id="description"
+                    value={formData.description}
+                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                    placeholder="Descreva este local de missão"
+                    rows={3}
                   />
                 </div>
               </div>
-              <div className="grid grid-cols-2 gap-4">
+
+              {/* Endereço */}
+              <div className="space-y-4">
                 <div>
-                  <Label htmlFor="country">País</Label>
+                  <Label htmlFor="address" className="block mb-2">
+                    Endereço
+                  </Label>
                   <Input
-                    id="country"
-                    value={formData.country}
-                    onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-                    placeholder="Brasil"
+                    id="address"
+                    value={formData.address}
+                    onChange={(e) => setFormData({ ...formData, address: e.target.value })}
+                    placeholder="Rua, Número, Bairro"
                   />
                 </div>
-                <div>
-                  <Label htmlFor="postalCode">CEP</Label>
-                  <Input
-                    id="postalCode"
-                    value={formData.postalCode}
-                    onChange={(e) => setFormData({ ...formData, postalCode: e.target.value })}
-                    placeholder="00000-000"
-                  />
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="city" className="block mb-2">
+                      Cidade
+                    </Label>
+                    <Input
+                      id="city"
+                      value={formData.city}
+                      onChange={(e) => setFormData({ ...formData, city: e.target.value })}
+                      placeholder="São Paulo"
+                      required
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="state" className="block mb-2">
+                      Estado
+                    </Label>
+                    <Input
+                      id="state"
+                      value={formData.state}
+                      onChange={(e) => setFormData({ ...formData, state: e.target.value })}
+                      placeholder="SP"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <Label htmlFor="country" className="block mb-2">
+                      País
+                    </Label>
+                    <Input
+                      id="country"
+                      value={formData.country}
+                      onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                      placeholder="Brasil"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="postalCode" className="block mb-2">
+                      CEP
+                    </Label>
+                    <Input
+                      id="postalCode"
+                      value={formData.postalCode}
+                      onChange={(e) => setFormData({ ...formData, postalCode: e.target.value })}
+                      placeholder="00000-000"
+                    />
+                  </div>
                 </div>
               </div>
-              <div>
-                <Label htmlFor="coordinator">Coordenador</Label>
+
+              {/* Coordenador */}
+              <div className="space-y-2">
+                <Label htmlFor="coordinator" className="block mb-2">
+                  Coordenador
+                </Label>
                 <Select
                   value={formData.coordinatorId?.toString() || "none"}
                   onValueChange={(value) =>
                     setFormData({ ...formData, coordinatorId: value === "none" ? null : Number(value) })
                   }
                 >
-                  <SelectTrigger>
+                  <SelectTrigger id="coordinator">
                     <SelectValue placeholder="Selecione um coordenador" />
                   </SelectTrigger>
                   <SelectContent>
@@ -261,6 +293,7 @@ export default function LocationsPage() {
                   </SelectContent>
                 </Select>
               </div>
+
               <DialogFooter>
                 <Button type="button" variant="outline" onClick={() => setDialogOpen(false)}>
                   Cancelar

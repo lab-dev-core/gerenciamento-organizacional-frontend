@@ -16,6 +16,8 @@ import { documentsApi, locationsApi, rolesApi } from "@/lib/api"
 import { useAuth } from "@/components/auth-provider"
 import { useToast } from "@/hooks/use-toast"
 import Link from "next/link"
+import { FormField } from "@/components/ui/field"
+
 
 export default function DocumentsPage() {
   const { user } = useAuth()
@@ -278,37 +280,32 @@ export default function DocumentsPage() {
                 <DialogTitle>{editingDoc ? "Editar Documento" : "Novo Documento"}</DialogTitle>
               </DialogHeader>
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <Label htmlFor="title">Título</Label>
+                <FormField label="Título" htmlFor="title" required>
                   <Input
                     id="title"
                     value={formData.title}
                     onChange={(e) => setFormData({ ...formData, title: e.target.value })}
                     placeholder="Título do documento"
-                    required
                   />
-                </div>
+                </FormField>
 
-                <div>
-                  <Label htmlFor="content">Conteúdo</Label>
+                <FormField label="Conteúdo" htmlFor="content" required>
                   <Textarea
                     id="content"
                     value={formData.content}
                     onChange={(e) => setFormData({ ...formData, content: e.target.value })}
                     placeholder="Conteúdo do documento formativo..."
                     rows={8}
-                    required
                   />
-                </div>
+                </FormField>
 
                 <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <Label htmlFor="documentType">Tipo de Documento</Label>
+                  <FormField label="Tipo de Documento" htmlFor="documentType">
                     <Select
                       value={formData.documentType}
                       onValueChange={(value) => setFormData({ ...formData, documentType: value })}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger id="documentType">
                         <SelectValue placeholder="Selecione o tipo" />
                       </SelectTrigger>
                       <SelectContent>
@@ -319,15 +316,14 @@ export default function DocumentsPage() {
                         ))}
                       </SelectContent>
                     </Select>
-                  </div>
+                  </FormField>
 
-                  <div>
-                    <Label htmlFor="accessLevel">Nível de Acesso</Label>
+                  <FormField label="Nível de Acesso" htmlFor="accessLevel">
                     <Select
                       value={formData.accessLevel}
                       onValueChange={(value) => setFormData({ ...formData, accessLevel: value })}
                     >
-                      <SelectTrigger>
+                      <SelectTrigger id="accessLevel">
                         <SelectValue placeholder="Selecione o acesso" />
                       </SelectTrigger>
                       <SelectContent>
@@ -338,22 +334,19 @@ export default function DocumentsPage() {
                         ))}
                       </SelectContent>
                     </Select>
-                  </div>
+                  </FormField>
                 </div>
 
-                <div>
-                  <Label htmlFor="keywords">Palavras-chave</Label>
+                <FormField label="Palavras-chave" htmlFor="keywords">
                   <Input
                     id="keywords"
                     value={formData.keywords}
                     onChange={(e) => setFormData({ ...formData, keywords: e.target.value })}
                     placeholder="formação, espiritualidade, comunidade"
                   />
-                </div>
+                </FormField>
 
-                {/* NOVA SEÇÃO: Upload de arquivo */}
-                <div className="space-y-2">
-                  <Label htmlFor="file">Anexar Arquivo (opcional)</Label>
+                <FormField label="Anexar Arquivo (opcional)" htmlFor="file">
                   <div className="flex items-center gap-2">
                     <Input
                       id="file"
@@ -364,29 +357,28 @@ export default function DocumentsPage() {
                       className="flex-1"
                     />
                     {selectedFile && (
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="icon"
-                        onClick={handleRemoveFile}
-                      >
+                      <Button type="button" variant="ghost" size="icon" onClick={handleRemoveFile}>
                         <X className="h-4 w-4" />
                       </Button>
                     )}
                   </div>
+
                   {selectedFile && (
-                    <div className="flex items-center gap-2 p-3 rounded-md bg-muted">
+                    <div className="flex items-center gap-2 p-3 rounded-md bg-muted mt-2">
                       <File className="h-4 w-4 text-muted-foreground" />
                       <div className="flex-1 text-sm">
                         <p className="font-medium">{selectedFile.name}</p>
-                        <p className="text-muted-foreground text-xs">{formatFileSize(selectedFile.size)}</p>
+                        <p className="text-muted-foreground text-xs">
+                          {formatFileSize(selectedFile.size)}
+                        </p>
                       </div>
                     </div>
                   )}
-                  <p className="text-xs text-muted-foreground">
+
+                  <p className="text-xs text-muted-foreground mt-1">
                     Tipos aceitos: PDF, Word, Excel, TXT, ODT (máx. 10MB)
                   </p>
-                </div>
+                </FormField>
 
                 <DialogFooter>
                   <Button type="button" variant="outline" onClick={() => setDialogOpen(false)}>
@@ -395,6 +387,7 @@ export default function DocumentsPage() {
                   <Button type="submit">Salvar</Button>
                 </DialogFooter>
               </form>
+
             </DialogContent>
           </Dialog>
         )}
