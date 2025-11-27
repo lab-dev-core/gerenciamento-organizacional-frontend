@@ -25,7 +25,7 @@ __turbopack_context__.s([
     "usersApi",
     ()=>usersApi
 ]);
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080";
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8081";
 class ApiClient {
     static token = null;
     static setToken(token) {
@@ -125,7 +125,7 @@ const documentsApi = {
         const formData = new FormData();
         formData.append('file', file);
         const token = localStorage.getItem('token');
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/documents/${documentId}/upload`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081'}/api/documents/${documentId}/upload`, {
             method: 'POST',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -139,7 +139,7 @@ const documentsApi = {
     },
     downloadFile: async (documentId, fileName)=>{
         const token = localStorage.getItem('token');
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/documents/${documentId}/download`, {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081'}/api/documents/${documentId}/download`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`

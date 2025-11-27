@@ -1,5 +1,5 @@
 // API client configuration for backend integration
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8080"
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8081"
 
 interface ApiError {
   message: string
@@ -163,7 +163,7 @@ export const documentsApi = {
     formData.append('file', file)
     
     const token = localStorage.getItem('token')
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/documents/${documentId}/upload`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081'}/api/documents/${documentId}/upload`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${token}`,
@@ -179,7 +179,7 @@ export const documentsApi = {
   
   downloadFile: async (documentId: number, fileName: string) => {
     const token = localStorage.getItem('token')
-    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8080'}/api/documents/${documentId}/download`, {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8081'}/api/documents/${documentId}/download`, {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${token}`,
