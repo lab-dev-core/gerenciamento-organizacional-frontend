@@ -1,5 +1,5 @@
 // API client configuration for backend integration
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8081"
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://app.dev-core.online/api"
 
 interface ApiError {
   message: string
