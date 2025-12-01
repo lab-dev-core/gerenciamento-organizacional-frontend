@@ -1,5 +1,5 @@
 // API client configuration for backend integration
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://app.dev-core.online/api"
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://app.dev-core.online"
 
 interface ApiError {
   message: string
